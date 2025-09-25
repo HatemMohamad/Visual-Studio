@@ -1,0 +1,80 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Favorite Song</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #121212;
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header#animatedHeader {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            padding: 30px;
+            font-size: 2rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            color: white;
+        }
+
+        .video-section {
+            margin-top: 40px;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        iframe {
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Keyframes for header animation */
+        @@keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('animatedHeader');
+
+            const colors = ['#ff416c', '#ff4b2b', '#1e90ff', '#00ff7f', '#ff1493'];
+            let i = 0;
+
+            setInterval(() => {
+                header.style.background = `linear-gradient(45deg, ${colors[i]}, ${colors[(i + 1) % colors.length]})`;
+                i = (i + 1) % colors.length;
+            }, 2000); // update every 2 seconds
+        });
+    </script>
+</head>
+<body>
+    <header id="animatedHeader">🎵 Welcome to My Music Page 🎵</header>
+
+    <main>
+        <section class="video-section">
+            <h2>Enjoy this song!</h2>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/jb5g4UFHmfQ?si=rjXDX4QN7lTQxFxV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
